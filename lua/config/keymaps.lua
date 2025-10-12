@@ -47,6 +47,22 @@ keymap.set("n", "<leader>de", function()
   require("telescope.builtin").diagnostics({ default_text = ":E:" })
 end)
 
+-- Formatear incluso buffers sin nombre
+vim.keymap.set("n", "<leader>F", function()
+  -- Si no hay filetype, preguntar o asignar uno
+  if vim.bo.filetype == "" then
+    local ft = vim.fn.input("Filetype (e.g. json, lua, javascript): ")
+    if ft ~= "" then
+      vim.bo.filetype = ft
+    else
+      vim.notify("❌ No filetype set, cannot format", vim.log.levels.WARN)
+      return
+    end
+  end
+
+  -- Ejecuta LazyFormat
+  vim.cmd("LazyFormat")
+end, { desc = "Format current buffer (even noname)" })
 -- jdtls keymaps
 --
 keymap.set("n", "<leader>j", "<cmd>lua require('jdtls').extract_variable()<cr>")

@@ -6,7 +6,11 @@ return {
   config = function()
     local builtin = require("telescope.builtin")
     require("telescope").setup({
+
       defaults = {
+        preview = {
+          treesitter = false, -- Deshabilita treesitter en previews
+        },
         file_ignore_patterns = { "node_modules/.*", "dist", "%.class$", "target" },
         prompt_prefix = "  ",
         pickers = {
