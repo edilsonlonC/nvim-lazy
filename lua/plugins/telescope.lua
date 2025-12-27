@@ -44,5 +44,26 @@ return {
     vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
     vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+    -- Mapear gi para abrir implementaciones en Telescope
+    vim.keymap.set("n", "gI", function()
+      builtin.lsp_implementations()
+    end, { desc = "LSP: Go to implementation (Telescope)" })
+
+    -- Otros keymaps útiles de LSP con Telescope
+    vim.keymap.set("n", "gd", function()
+      builtin.lsp_definitions()
+    end, { desc = "LSP: Go to definition (Telescope)" })
+
+    vim.keymap.set("n", "gr", function()
+      builtin.lsp_references()
+    end, { desc = "LSP: Go to references (Telescope)" })
+
+    vim.keymap.set("n", "<leader>ds", function()
+      builtin.lsp_document_symbols()
+    end, { desc = "LSP: Document symbols" })
+
+    vim.keymap.set("n", "<leader>ws", function()
+      builtin.lsp_workspace_symbols()
+    end, { desc = "LSP: Workspace symbols" })
   end,
 }

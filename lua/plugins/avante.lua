@@ -14,6 +14,12 @@ return {
     instructions_file = "avante.md",
     -- for example
     provider = "claude",
+    mcp = {
+      git = {
+        command = "uvx",
+        args = { "mcp-server-git" },
+      },
+    },
     providers = {
       claude = {
         endpoint = "https://api.anthropic.com",
